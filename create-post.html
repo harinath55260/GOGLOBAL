@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOGLOBAL - Create Post</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+padding-bottom:90px;
+}
+
+/* Header */
+
+.header{
+background:#fff;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.header h2{
+font-size:20px;
+}
+
+/* Container */
+
+.container{
+padding:15px;
+}
+
+/* Upload Section */
+
+.upload-box{
+background:#fff;
+padding:20px;
+border-radius:15px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.upload-box input{
+margin-top:15px;
+}
+
+.preview{
+height:220px;
+background:#ddd;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:15px;
+}
+
+/* Caption */
+
+.caption-box{
+background:#fff;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.caption-box textarea{
+width:100%;
+height:120px;
+border:none;
+outline:none;
+resize:none;
+font-size:15px;
+}
+
+/* Privacy */
+
+.privacy{
+background:#fff;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.privacy h3{
+margin-bottom:10px;
+}
+
+.privacy label{
+display:block;
+margin-bottom:10px;
+}
+
+/* Button */
+
+.post-btn{
+width:100%;
+padding:15px;
+border:none;
+background:#1877f2;
+color:#fff;
+font-size:17px;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* Bottom Nav */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#fff;
+display:flex;
+justify-content:space-around;
+padding:15px;
+box-shadow:0 -2px 10px rgba(0,0,0,.1);
+}
+
+.bottom-nav i{
+font-size:24px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+<h2>Create New Post</h2>
+<a href="home.html"><i class="fa-solid fa-xmark"></i></a>
+</header>
+
+<div class="container">
+
+<div class="upload-box">
+
+<h3>📷 Upload Photo / 🎥 Video</h3>
+
+<input type="file" accept="image/*,video/*">
+
+<div class="preview">
+Preview Area
+</div>
+
+</div>
+
+<div class="caption-box">
+
+<h3>Caption</h3>
+
+<textarea placeholder="Write something for your followers..."></textarea>
+
+</div>
+
+<div class="privacy">
+
+<h3>Who can see this?</h3>
+
+<label>
+<input type="radio" name="privacy" checked>
+🌍 Public
+</label>
+
+<label>
+<input type="radio" name="privacy">
+👥 Followers Only
+</label>
+
+<label>
+<input type="radio" name="privacy">
+🔒 Private
+</label>
+
+</div>
+
+<button class="post-btn">
+🚀 POST TO GOGLOBAL
+</button>
+
+</div>
+
+<nav class="bottom-nav">
+
+<a href="home.html"><i class="fa-solid fa-house"></i></a>
+<a href="search.html"><i class="fa-solid fa-magnifying-glass"></i></a>
+<a href="create-post.html"><i class="fa-solid fa-plus"></i></a>
+<a href="reels.html"><i class="fa-solid fa-video"></i></a>
+<a href="profile.html"><i class="fa-solid fa-user"></i></a>
+
+</nav>
+
+</body>
+</html>
