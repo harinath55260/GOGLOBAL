@@ -418,3 +418,48 @@ body{
     grid-template-columns:repeat(3,1fr);
   }
 } */
+
+/* Mobile View */
+@media (max-width: 600px){
+
+  /* Apps - 1 per row */
+  .apps{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .app{
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .app img{
+    width: 60px;
+    margin-bottom: 10px;
+  }
+
+  /* Photos */
+  .photos{
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+  }
+
+  /* News */
+  .news{
+    padding: 15px;
+    font-size: 17px;
+    max-height: none;
+  }
+
+  .news a{
+    padding: 12px;
+    font-size: 17px;
+  }
+
+  /* Search */
+  .search input{
+    padding: 15px;
+    font-size: 16px;
+  }
+
+}
