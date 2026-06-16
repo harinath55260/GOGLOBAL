@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Media</title>
+    <link rel="stylesheet" href="css/style.css"> 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="header">🌐 Global Media</div>
+
+<div id="mainContent">
+
+    <!-- Tabs --> 
+    <div class="tabs">
+   <div class="tab active" onclick="showTab(0)">Social Media Apps</div>
+        <div class="tab" onclick="showTab(1)">Photos</div>
+        <div class="tab" onclick="showTab(2)">Trending News</div>
+        <div class="tab" onclick="showTab(3)">Search</div>
+    </div>
+
+    <!-- Apps -->
+    <div class="section active">
+        <h2 class="title">🌐 Social Media Apps</h2>
+
+        <div class="apps">
+            <div class="app" onclick="openApp('https://youtube.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><br>YouTube</div>
+            <div class="app" onclick="openApp('https://instagram.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"><br>Instagram</div>
+            <div class="app" onclick="openApp('https://facebook.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png"><br>Facebook</div>
+            <div class="app" onclick="openApp('https://web.whatsapp.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384055.png"><br>WhatsApp</div>
+            <div class="app" onclick="openApp('https://twitter.com')"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"><br>Twitter</div>
+            <div class="app" onclick="openApp('https://linkedin.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"><br>LinkedIn</div>
+            <div class="app" onclick="openApp('https://pinterest.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"><br>Pinterest</div>
+            <div class="app" onclick="openApp('https://snapchat.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384016.png"><br>Snapchat</div>
+            <div class="app" onclick="openApp('https://reddit.com')"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384017.png"><br>Reddit</div>
+            <div class="app" onclick="openApp('https://tiktok.com')"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png"><br>TikTok</div>
+            <div class="app" onclick="openApp('https://telegram.org')"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><br>Telegram</div>
+            <div class="app" onclick="openApp('https://discord.com')"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"><br>Discord</div>
+        </div>
+
+    </div>
+
+    <!-- Photos -->
+    <div class="section">
+        <div class="photos" id="photoBox"></div>
+    </div>
+
+    <!-- News -->
+    <div class="section">
+        <div class="news" id="newsBox">
+            <h3>Trending Telugu News</h3>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="section search">
+        <input id="searchInput" placeholder="Search Google..."
+               onkeyup="getSuggestions(this.value)"
+               onkeydown="if(event.key==='Enter')searchNow(this.value)">
+        <div id="suggestions"></div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="dev">
+    <h3>👨‍💻 Developed by kunchapu Harinath</h3>
+    <p>Global Media is a self-developed web application.<br>
+        Built using HTML, CSS & JavaScript.<br>
+        Life is short, eat the biryani first! 🏃‍♂️</p>
+</div>
+
+<nav class="bottom-nav">
+
+    <a href="home.html">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <a href="search.html">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+
+    <a href="create-post.html">
+        <i class="fa-solid fa-plus"></i>
+    </a>
+
+    <a href="reels.html">
+        <i class="fa-solid fa-video"></i>
+    </a>
+
+    <a href="profile.html">
+        <i class="fa-solid fa-user"></i>
+    </a>
+
+</nav>
+
+<script src="js/app.js"></script>
+</body>
+</html>
