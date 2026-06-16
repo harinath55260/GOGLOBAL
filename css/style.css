@@ -419,70 +419,83 @@ body{
   }
 } */
  /* Mobile View */
-@media (max-width: 600px){
+/* Mobile View */
+@media screen and (max-width: 600px){
 
   .header{
-    font-size: 20px;
-    padding: 15px;
+    font-size:18px;
+    padding:15px;
+  }
+
+  .tabs{
+    display:flex;
   }
 
   .tab{
-    padding: 14px;
-    font-size: 16px;
+    font-size:15px;
+    padding:12px 5px;
   }
 
-  /* Apps - One Column */
+  .section{
+    padding:10px;
+  }
+
+  .title{
+    font-size:20px;
+  }
+
+  /* Apps */
   .apps{
-    grid-template-columns: 1fr;
-    gap: 15px;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
   }
 
   .app{
-    padding: 20px;
-    font-size: 18px;
+    padding:12px;
+    font-size:13px;
   }
 
   .app img{
-    width: 60px;
+    width:50px;
   }
 
   /* Photos */
   .photos{
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
   }
 
   .photos img{
-    border-radius: 10px;
+    border-radius:8px;
   }
 
   /* News */
   .news{
-    padding: 15px;
-    max-height: none;
+    max-height:none;
+    padding:12px;
   }
 
   .news a{
-    padding: 16px;
-    margin: 10px 0;
-    font-size: 18px;
-    border-radius: 10px;
+    display:block;
+    padding:12px;
+    margin:6px 0;
+    font-size:15px;
+    border-radius:8px;
   }
 
   /* Search */
   .search input{
-    padding: 15px;
-    font-size: 17px;
+    padding:14px;
+    font-size:16px;
   }
 
   #suggestions div{
-    padding: 14px;
-    font-size: 16px;
+    padding:12px;
+    font-size:15px;
   }
 
   .dev{
-    font-size: 15px;
-    padding: 18px;
+    padding:15px;
+    font-size:14px;
   }
-
 }
