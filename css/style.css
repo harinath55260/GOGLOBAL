@@ -350,7 +350,7 @@ body{
 /* Bigger app cards */
 .app{
   background:white;
-  padding:100px;
+  padding:15px;
   text-align:center;
   cursor:pointer;
   border-radius:10px;
@@ -379,7 +379,7 @@ body{
 /* News */
 .news a{
   display:block;
-  padding:100px;
+  padding: 100px;
   margin:8px 0;
   background:#fff;
   border-radius:8px;
@@ -412,4 +412,77 @@ body{
   padding:15px;
 }
 
+/* Mobile view
+@media(max-width:600px){
+  .apps{
+    grid-template-columns:repeat(3,1fr);
+  }
+} */
+ /* Mobile View */
+@media (max-width: 600px){
 
+  .header{
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .tab{
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  /* Apps - One Column */
+  .apps{
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .app{
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .app img{
+    width: 60px;
+  }
+
+  /* Photos */
+  .photos{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .photos img{
+    border-radius: 10px;
+  }
+
+  /* News */
+  .news{
+    padding: 15px;
+    max-height: none;
+  }
+
+  .news a{
+    padding: 16px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  /* Search */
+  .search input{
+    padding: 15px;
+    font-size: 17px;
+  }
+
+  #suggestions div{
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .dev{
+    font-size: 15px;
+    padding: 18px;
+  }
+
+}
