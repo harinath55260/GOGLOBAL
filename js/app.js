@@ -266,3 +266,89 @@ function toggleSave(btn){
         icon.classList.add("fa-regular");
     }
 }
+
+
+function showTab(i){
+  let tabs=document.querySelectorAll('.tab');
+  let sections=document.querySelectorAll('.section');
+  tabs.forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  sections.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+}
+
+function openApp(url){
+  window.open(url,'_blank');
+}
+
+/* Photos */
+const photoBox=document.getElementById("photoBox");
+let photoCount=0;
+
+function loadPhotos(){
+  for(let i=0;i<12;i++){
+    photoCount++;
+    let a=document.createElement("a");
+    a.href=`https://picsum.photos/400?random=${photoCount}`;
+    a.download=`photo_${photoCount}.jpg`;
+
+    let img=document.createElement("img");
+    img.src=`https://picsum.photos/400?random=${photoCount}`;
+    img.loading="lazy";
+
+    a.appendChild(img);
+    photoBox.appendChild(a);
+  }
+}
+loadPhotos();
+
+window.addEventListener("scroll",()=>{
+  if(innerHeight+scrollY>=document.body.offsetHeight-100){
+    loadPhotos();
+  }
+});
+
+/* News */
+const newsBox=document.getElementById("newsBox");
+
+const trendingNews=[
+  "Breaking: Telugu movie update",
+  "India cricket latest news",
+  "Startup in Hyderabad",
+  "Weather alert",
+  "Stock market news"
+];
+
+trendingNews.forEach(n=>{
+  let a=document.createElement("a");
+  a.innerText=n;
+  a.href="#";
+  newsBox.appendChild(a);
+});
+
+/* Search */
+const suggestions=document.getElementById("suggestions");
+
+function getSuggestions(q){
+  if(q.length<2){
+    suggestions.style.display="none";
+    return;
+  }
+
+  let s=document.createElement("script");
+  s.src="https://suggestqueries.google.com/complete/search?client=firefox&q="+q+"&callback=showSuggestions";
+  document.body.appendChild(s);
+}
+
+function showSuggestions(data){
+  suggestions.innerHTML="";
+  data[1].forEach(x=>{
+    let d=document.createElement("div");
+    d.innerText=x;
+    d.onclick=()=>searchNow(x);
+    suggestions.appendChild(d);
+  });
+  suggestions.style.display="block";
+}
+
+function searchNow(q){
+  window.open("https://www.google.com/search?q="+q,"_blank");
+}
