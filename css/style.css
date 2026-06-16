@@ -307,18 +307,12 @@ body{
     z-index:9999;
 }
 
-/* .video-container{
-    position:relative;
-    width:90%;
-    max-width:900px;
-    margin:50px auto;
-} */
-
 .video-container{
     width:90%;
     max-width:900px;
-    margin:100px auto;
     position:relative;
+    margin:auto;
+    top:120px; /* కిందకు జరగడానికి */
 }
 .video-container iframe{
     width:100%;
