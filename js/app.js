@@ -453,3 +453,16 @@ document.addEventListener("click",(e)=>{
     suggestions.style.display = "none";
   }
 });
+
+function openVideo(){
+    document.getElementById("videoModal").style.display = "block";
+
+    document.getElementById("videoFrame").src =
+    "https://player.mediadelivery.net/embed/683602/94f76d04-7efa-49ca-a18c-2a99cb3fa160?autoplay=true";
+}
+
+function closeVideo(){
+    document.getElementById("videoModal").style.display = "none";
+
+    document.getElementById("videoFrame").src = "";
+}
