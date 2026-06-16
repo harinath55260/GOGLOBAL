@@ -412,9 +412,9 @@ body{
   padding:15px;
 }
 
-/* Mobile view */
+/* /* Mobile view */
 @media(max-width:600px){
   .apps{
     grid-template-columns:repeat(3,1fr);
   }
-}
+} */
