@@ -266,89 +266,190 @@ function toggleSave(btn){
         icon.classList.add("fa-regular");
     }
 }
-
-
 function showTab(i){
-  let tabs=document.querySelectorAll('.tab');
-  let sections=document.querySelectorAll('.section');
-  tabs.forEach((t,idx)=>t.classList.toggle('active',idx===i));
-  sections.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('.section');
+
+  tabs.forEach((tab,index)=>{
+    tab.classList.toggle('active', index === i);
+  });
+
+  sections.forEach((section,index)=>{
+    section.classList.toggle('active', index === i);
+  });
 }
 
+/* Open Apps */
 function openApp(url){
-  window.open(url,'_blank');
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 /* Photos */
-const photoBox=document.getElementById("photoBox");
-let photoCount=0;
+const photoBox = document.getElementById("photoBox");
+let photoCount = 0;
+let loading = false;
 
 function loadPhotos(){
-  for(let i=0;i<12;i++){
+  for(let i=0; i<12; i++){
+
     photoCount++;
-    let a=document.createElement("a");
-    a.href=`https://picsum.photos/400?random=${photoCount}`;
-    a.download=`photo_${photoCount}.jpg`;
 
-    let img=document.createElement("img");
-    img.src=`https://picsum.photos/400?random=${photoCount}`;
-    img.loading="lazy";
+    const img = document.createElement("img");
+    img.src = `https://picsum.photos/400?random=${photoCount}`;
+    img.loading = "lazy";
+    img.alt = "Photo";
 
-    a.appendChild(img);
-    photoBox.appendChild(a);
+    photoBox.appendChild(img);
   }
 }
+
 loadPhotos();
 
-window.addEventListener("scroll",()=>{
-  if(innerHeight+scrollY>=document.body.offsetHeight-100){
+/* Infinite Scroll */
+window.addEventListener("scroll", ()=>{
+
+  if(loading) return;
+
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 200){
+
+    loading = true;
+
     loadPhotos();
+
+    setTimeout(()=>{
+      loading = false;
+    },500);
   }
 });
+const newsBox = document.getElementById("newsBox");
 
-/* News */
-const newsBox=document.getElementById("newsBox");
-
-const trendingNews=[
-  "Breaking: Telugu movie update",
-  "India cricket latest news",
-  "Startup in Hyderabad",
-  "Weather alert",
-  "Stock market news"
+const trendingNews = [
+  {
+    title: "📰 Eenadu",
+    url: "https://www.eenadu.net"
+  },
+  {
+    title: "📰 Sakshi",
+    url: "https://www.sakshi.com"
+  },
+  {
+    title: "📰 Andhra Jyothy",
+    url: "https://www.andhrajyothy.com"
+  },
+  {
+    title: "📰 TV9 Telugu",
+    url: "https://tv9telugu.com"
+  },
+  {
+    title: "📰 NTV Telugu",
+    url: "https://www.ntvtelugu.com"
+  },
+  {
+    title: "📰 V6 News",
+    url: "https://www.v6velugu.com"
+  },
+  {
+    title: "📰 10TV",
+    url: "https://10tv.in"
+  },
+  {
+    title: "📰 ABN Andhra Jyothy",
+    url: "https://www.andhrajyothy.com/abn"
+  }
 ];
 
-trendingNews.forEach(n=>{
-  let a=document.createElement("a");
-  a.innerText=n;
-  a.href="#";
+trendingNews.forEach(news => {
+
+  const a = document.createElement("a");
+
+  a.innerText = news.title;
+  a.href = news.url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+
   newsBox.appendChild(a);
+
 });
 
-/* Search */
-const suggestions=document.getElementById("suggestions");
+/* Search Suggestions */
+const suggestions = document.getElementById("suggestions");
+const searchInput = document.getElementById("searchInput");
 
-function getSuggestions(q){
-  if(q.length<2){
-    suggestions.style.display="none";
+function getSuggestions(query){
+
+  if(query.length < 2){
+    suggestions.style.display = "none";
     return;
   }
 
-  let s=document.createElement("script");
-  s.src="https://suggestqueries.google.com/complete/search?client=firefox&q="+q+"&callback=showSuggestions";
-  document.body.appendChild(s);
+  const oldScript = document.getElementById("googleSuggest");
+  if(oldScript) oldScript.remove();
+
+  const script = document.createElement("script");
+
+  script.id = "googleSuggest";
+
+  script.src =
+    "https://suggestqueries.google.com/complete/search?client=firefox&q="
+    + encodeURIComponent(query)
+    + "&callback=showSuggestions";
+
+  document.body.appendChild(script);
 }
 
-function showSuggestions(data){
-  suggestions.innerHTML="";
-  data[1].forEach(x=>{
-    let d=document.createElement("div");
-    d.innerText=x;
-    d.onclick=()=>searchNow(x);
-    suggestions.appendChild(d);
+window.showSuggestions = function(data){
+
+  suggestions.innerHTML = "";
+
+  data[1].forEach(item=>{
+
+    const div = document.createElement("div");
+
+    div.innerText = item;
+    div.className = "suggestion-item";
+
+    div.onclick = ()=>{
+      searchNow(item);
+    };
+
+    suggestions.appendChild(div);
   });
-  suggestions.style.display="block";
+
+  suggestions.style.display =
+    data[1].length ? "block" : "none";
+};
+
+function searchNow(query){
+
+  if(!query.trim()) return;
+
+  window.open(
+    "https://www.google.com/search?q=" +
+    encodeURIComponent(query),
+    "_blank"
+  );
+
+  suggestions.style.display = "none";
 }
 
-function searchNow(q){
-  window.open("https://www.google.com/search?q="+q,"_blank");
+/* Enter Key Search */
+if(searchInput){
+
+  searchInput.addEventListener("keypress",(e)=>{
+
+    if(e.key === "Enter"){
+      searchNow(searchInput.value);
+    }
+  });
 }
+
+/* Hide Suggestions Outside Click */
+document.addEventListener("click",(e)=>{
+
+  if(
+    !e.target.closest(".search") &&
+    !e.target.closest("#suggestions")
+  ){
+    suggestions.style.display = "none";
+  }
+});
